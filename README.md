@@ -1,7 +1,7 @@
 # ORPTQ
 
 This repository contains the code for the ORPTQ. 
-The purpose of the ORPTQ quantization method is to adjust the quantization range based on the second-order method, ensuring a better starting point. The second-order method we referred GPTQ in ICLR 2023 paper [GPTQ: Accurate Post-training Compression for Generative Pretrained Transformers](https://arxiv.org/abs/2210.17323). 
+The purpose of the ORPTQ quantization method is to adjust the quantization range based on the second-order method, ensuring a better starting point. The second-order method was referred to GPTQ in ICLR 2023 paper [GPTQ: Accurate Post-training Compression for Generative Pretrained Transformers](https://arxiv.org/abs/2210.17323). 
 
 The current release includes the following features:
 
