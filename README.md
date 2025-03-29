@@ -13,7 +13,11 @@ command example:
 python opt.py "opt-6.7b" "c4" --wbits 4 --abtype "pso" --quanttype "gptq"
 
 model: the path of the opt model
+
 dataset: "c4" or "wikitext"
+
 wbits:4,3,2
+
 abtype: "pso","optim","gdiv","mix","none"
+
 quanttype "gptq","plain"
