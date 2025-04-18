@@ -7,10 +7,10 @@ import os
 import logging
 
 def get_optbounds(model,inps,attn_mask,wbits,dev):
-    optfile = "../Logs/opt_bounds_3pd01_4bit.pt"
-    #if os.path.exists(optfile):
-    #    optbounds = torch.load(optfile)
-    #    return optbounds
+    optfile = f"../Logs/opt_bounds_3pd01_{wbits}bit.pt"
+    if os.path.exists(optfile):
+        optbounds = torch.load(optfile)
+        return optbounds
 
     layers = model.model.decoder.layers    
     def opt_hook(name):
@@ -51,7 +51,7 @@ def get_optbounds(model,inps,attn_mask,wbits,dev):
         del layer
         torch.cuda.empty_cache()
 
-    #torch.save(optbounds, optfile) 
+    torch.save(optbounds, optfile) 
     return optbounds 
 
 class getAB:

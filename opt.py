@@ -472,8 +472,8 @@ if __name__ == '__main__':
         help='Whether to use static groups; recommended when using `--actorder` for more efficient inference.'
     )
 
-    #args = parser.parse_args()
-    args = parser.parse_args(["../models/opt-6.7b","c4","--wbits","4","--abtype","std","--quanttype","plain"])
+    args = parser.parse_args()
+    #args = parser.parse_args(["../models/opt-6.7b","c4","--wbits","4","--abtype","gdiv","--quanttype","plain"])
     
     if args.load:
         model = load_quant3(args.model, args.load)
@@ -529,7 +529,8 @@ if __name__ == '__main__':
         )
         print(dataset)
         opt_eval(model, testloader, DEV)
-
-    if args.save:
-        opt_pack3(model, quantizers)
-        torch.save(model.state_dict(), args.save) 
+      
+    model.save_pretrained(f"../qmodels/opt6.7b_{args.wbits}_{args.abtype}_{args.quanttype}")
+	#if args.save:
+    #    opt_pack3(model, quantizers)
+    #    torch.save(model.state_dict(), args.save) 

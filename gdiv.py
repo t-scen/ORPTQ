@@ -9,7 +9,7 @@ import random
 
 @torch.no_grad()
 def get_gdivbounds(model,inps,attn_mask,wbits,dev):
-    optfile = "../Logs/opt_bounds_gdiv_4bit.pt"
+    optfile = "../sinLogs/opt_bounds_gdiv_4bit.pt"
     #if os.path.exists(optfile):
     #    optbounds = torch.load(optfile)
     #    return optbounds

@@ -6,7 +6,7 @@ import torch.nn as nn
 from gptq import *
 from modelutils import *
 from quant import *
-from pso import *
+#from pso import *
 from llama_optim import *
 from llama_pso import *
 from llama_gdiv import *
@@ -332,7 +332,8 @@ if __name__ == '__main__':
 
     logging.basicConfig(filename='./logs/Llama01.log', level=logging.INFO, filemode='a', format='%(levelname)s:%(asctime)s:%(message)s')
 
-    args = parser.parse_args(["../models/Llama-2-7b-hf","c4","--wbits","4","--abtype","gdiv","--quanttype","gptq"])
+    args = parser.parse_args()
+    #args = parser.parse_args(["../models/Llama-2-7b-hf","c4","--wbits","2","--abtype","gdiv","--quanttype","plain"])
 
     model = get_llama(args.model)
     model.eval()
@@ -376,8 +377,10 @@ if __name__ == '__main__':
         )
         print(dataset)
         llama_eval(model, testloader, DEV)
+      
+    model.save_pretrained(f"../qmodels/Llama-2-7b-hf_{args.wbits}_{args.abtype}_{args.quanttype}")
 
-    if args.save:
-        llama_pack3(model, quantizers)
-        torch.save(model.state_dict(), args.save)
+    #if args.save:
+    #    llama_pack3(model, quantizers)
+    #    torch.save(model.state_dict(), args.save)
 
